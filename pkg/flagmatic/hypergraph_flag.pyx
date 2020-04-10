@@ -37,7 +37,7 @@ http://cordis.europa.eu/project/rcn/104324_en.html
 
 #include "interrupt.pxi"
 #include "stdsage.pxi"
-include "cdefs.pxi"
+#include "cdefs.pxi"
 
 # This doesn't seem to be remembered from .pxd file
 # 35 + 42 + 7 = 84, 84 * 3 = 252
@@ -48,7 +48,6 @@ DEF MAX_NUMBER_OF_VERTICES = 35
 from libc.stdlib cimport malloc, calloc, realloc, free
 from libc.string cimport memset
 
-import sys # remove this, just for testing
 import numpy
 cimport numpy
 
@@ -1731,7 +1730,7 @@ cdef int *generate_permutations_fixing(int n, int s, int *number_of):
 
         # see if we've already generated it!
         key = (n, s)
-        if key in previous_permutations.iterkeys():
+        if key in previous_permutations.keys():
         
                 cib = <combinatorial_info_block>previous_permutations[key]
                 fac = cib.np
@@ -1781,7 +1780,7 @@ cdef int *generate_combinations(int n, int s, int *number_of):
 
         # see if we've already generated it!
         key = (n, s)
-        if key in previous_combinations.iterkeys():
+        if key in previous_combinations.keys():
         
                 cib = <combinatorial_info_block>previous_combinations[key]
                 fac = cib.np
@@ -1825,7 +1824,7 @@ cdef int *generate_combinations_plus(int n, int s, int *number_of):
 
         # see if we've already generated it!
         key = (n, s)
-        if key in previous_combinations_plus.iterkeys():
+        if key in previous_combinations_plus.keys():
         
                 cib = <combinatorial_info_block>previous_combinations_plus[key]
                 fac = cib.np
@@ -1869,7 +1868,7 @@ cdef int *generate_pair_combinations(int n, int s, int m1, int m2, int *number_o
 
         # see if we've already generated it!
         key = (n, s, m1, m2)
-        if key in previous_pair_combinations.iterkeys():
+        if key in previous_pair_combinations.keys():
         
                 cib = <combinatorial_info_block>previous_pair_combinations[key]
                 fac = cib.np
@@ -1937,7 +1936,7 @@ cdef int *generate_equal_pair_combinations(int n, int s, int m, int *number_of):
         
         # see if we've already generated it!
         key = (n, s, m)
-        if key in previous_equal_pair_combinations.iterkeys():
+        if key in previous_equal_pair_combinations.keys():
                 
                 cib = <combinatorial_info_block>previous_equal_pair_combinations[key]
                 fac = cib.np
