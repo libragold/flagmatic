@@ -59,3 +59,7 @@
 # Python
 *.pyc
 
+# Build
+pkg/Flagmatic.egg-info/
+pkg/build/
+pkg/dist/

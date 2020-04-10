@@ -601,7 +601,7 @@ cdef class HypergraphFlag (Flag):
                 for fg in flags:
                         mfgs = str(fg)
                         for perm in Permutations(range(1, s + 1)):
-                                permplus = list(perm) + range(s + 1, fg.n + 1)
+                                permplus = list(perm) + list(range(s + 1, fg.n + 1))
                                 ntg = tg.__copy__()
                                 ntg.relabel(perm)
                                 nfg = fg.__copy__()
@@ -820,7 +820,7 @@ cdef class HypergraphFlag (Flag):
                                         if ntgs < mintgs:
                                                 mintgs = ntgs
                                                 minh = h.__copy__()
-                                                minh.relabel(perm + range(h.t + 1, h.n + 1))
+                                                minh.relabel(perm + list(range(h.t + 1, h.n + 1)))
                                 h = minh                
                         h.make_minimal_isomorph()
                 

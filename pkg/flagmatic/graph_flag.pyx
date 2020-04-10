@@ -84,7 +84,7 @@ cdef class GraphFlag (HypergraphFlag):
                 Returns a Sage Graph object.
                 """
                 
-                g = Graph()
+                g = Graph(loops=True)
                 g.add_vertices(range(1, self._n + 1))
                 g.add_edges(self.edges)
                 return g

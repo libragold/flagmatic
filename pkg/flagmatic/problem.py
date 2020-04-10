@@ -1942,7 +1942,7 @@ class Problem(SageObject):
                 break
             try:
                 p.expect("\r\n")
-                line = p.before.strip() + "\n"
+                line = p.before.strip().decode('utf-8') + "\n"
                 self._sdp_solver_output += line
 
                 if show_output:
@@ -2352,7 +2352,7 @@ class Problem(SageObject):
         q_sizes = [self._sdp_Qdash_matrices[ti].nrows() for ti in range(num_types)]
 
         def rationalize(f):
-            return Integer(round(f * denominator)) / denominator
+            return Integer((f * denominator).round()) / denominator
 
         sys.stdout.write("Rounding matrices")
 
