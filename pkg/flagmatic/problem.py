@@ -2373,7 +2373,7 @@ class Problem(SageObject):
             else:
 
                 try:
-                    LF = numpy.linalg.cholesky(self._sdp_Qdash_matrices[ti])
+                    LF = numpy.linalg.cholesky(self._sdp_Qdash_matrices[ti].numpy(dtype='float'))
                     # TODO: Consider using this:
                     # LF = self._sdp_Qdash_matrices[ti].cholesky_decomposition()
                 except numpy.linalg.linalg.LinAlgError:
@@ -2617,7 +2617,7 @@ class Problem(SageObject):
             very_small_types = []
             for ti in self._active_types:
                 if self._exact_Qdash_matrices[ti].nrows() > 0:
-                    eigvals = sorted(numpy.linalg.eigvalsh(self._exact_Qdash_matrices[ti]))
+                    eigvals = sorted(numpy.linalg.eigvalsh(self._exact_Qdash_matrices[ti].numpy(dtype="float")))
                     if eigvals[0] < 0.0:
                         negative_types.append(ti)
                     elif eigvals[0] < 1e-6:
