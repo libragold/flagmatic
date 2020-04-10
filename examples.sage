@@ -29,7 +29,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from flagmatic.all import *
 
-import cStringIO
+from io import StringIO
 import datetime
 import os
 import sys
@@ -75,7 +75,7 @@ class Example:
         lines.append('problem.write_certificate("' + base_filename + '.js")\n')
         lines.append('problem.save("' + base_filename + '")\n')
 
-        buff = cStringIO.StringIO()
+        buff = StringIO()
         saved_stdout = sys.stdout
         sys.stdout = Tee(sys.stdout, buff)
 
